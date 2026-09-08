@@ -1,0 +1,30 @@
+import{render,screen}from"@testing-library/react"
+import userEvent from"@testing-library/user-event"
+import App from"../src/App.tsx"
+beforeEach(()=>localStorage.clear())
+test("changing wall width updates recommendation live without submit", async()=>{
+  const user=userEvent.setup()
+  render(<App/>)
+  expect(screen.getByText(/Enter your wall dimensions/i)).toBeInTheDocument()
+  const wEl=document.getElementById("wall-0-width")
+  const hEl=document.getElementById("wall-0-height")
+  if(!(wEl instanceof HTMLInputElement) || !(hEl instanceof HTMLInputElement)) throw new Error("inputs not found")
+  await user.type(wEl,"12")
+  await user.type(hEl,"8")
+  expect(await screen.findByText(/Buy 1 gallon/i)).toBeInTheDocument()
+  expect(screen.getByText(/Gross wall area/i)).toBeInTheDocument()
+})
+test("shows guard when cutouts exceed wall area", async()=>{
+  const user=userEvent.setup()
+  render(<App/>)
+  const wEl=document.getElementById("wall-0-width")
+  const hEl=document.getElementById("wall-0-height")
+  if(!(wEl instanceof HTMLInputElement) || !(hEl instanceof HTMLInputElement)) throw new Error("inputs not found")
+  await user.type(wEl,"5")
+  await user.type(hEl,"8")
+  const doorsEl=document.getElementById("door-count")
+  if(!(doorsEl instanceof HTMLInputElement)) throw new Error("doors not found")
+  await user.clear(doorsEl)
+  await user.type(doorsEl,"3")
+  expect(await screen.findByText(/Check your numbers/i)).toBeInTheDocument()
+})
