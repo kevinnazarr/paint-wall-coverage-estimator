@@ -1,7 +1,7 @@
 type Variant = "info" | "warn" | "success"
 export function Alert({ variant="info", title, children, onClose }: { variant?: Variant; title?: string; children: React.ReactNode; onClose?: ()=>void }) {
   const styles: Record<Variant,string> = {
-    info: "border-line bg-paper-2 text-[var(--color-ink)]",
+    info: "border-line bg-paper-2 text-ink",
     warn: "border-amber-300 bg-warn-bg text-[#78350F]",
     success: "border-emerald-200 bg-emerald-50 text-emerald-900",
   }
