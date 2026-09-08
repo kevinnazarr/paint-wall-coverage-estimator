@@ -6,7 +6,7 @@ export function Header({ onClear, onPrint }: {onClear:()=>void; onPrint:()=>void
         <p className="mt-2 text-[15px] text-ink-muted">Figure out how many cans to buy before your hardware store trip.</p>
       </div>
       <div className="no-print hidden sm:flex gap-2 shrink-0 pt-1">
-        <button onClick={onClear} className="min-h-10 rounded-xl border border-line bg-white px-3 text-sm font-medium hover:border-[var(--color-accent)]/30 hover:bg-accent-subtle transition-all focus-ring">Clear</button>
+        <button onClick={onClear} className="min-h-10 rounded-xl border border-line bg-white px-3 text-sm font-medium hover:border-accent/30 hover:bg-accent-subtle transition-all focus-ring">Clear</button>
         <button onClick={onPrint} className="min-h-10 rounded-xl border border-ink bg-ink px-3 text-sm font-semibold text-white hover:bg-black transition-all focus-ring">Print</button>
       </div>
     </header>
