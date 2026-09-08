@@ -13,7 +13,7 @@ export function ToastProvider({ children }: {children: ReactNode}){
       {children}
       <div aria-live="polite" aria-atomic="true" className="pointer-events-none fixed bottom-4 right-4 z-50 flex flex-col gap-2">
         {toasts.map(t=>(
-          <div key={t.id} className={`pointer-events-auto rounded-xl border px-4 py-3 text-sm font-medium shadow-[var(--shadow-hover)] transition-all ${t.variant==="success"?"bg-emerald-600 text-white border-emerald-700":"bg-[var(--color-ink)] text-white border-black"}`} style={{animation:"toastIn 180ms ease-out"}}>
+          <div key={t.id} className={`pointer-events-auto rounded-xl border px-4 py-3 text-sm font-medium shadow-[var(--shadow-hover)] transition-all ${t.variant==="success"?"bg-emerald-600 text-white border-emerald-700":"bg-ink text-white border-black"}`} style={{animation:"toastIn 180ms ease-out"}}>
             {t.msg}
           </div>
         ))}
