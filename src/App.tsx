@@ -31,28 +31,28 @@ function AppInner(){
   return (
     <div className="min-h-screen">
       <Header onClear={handleClear} onPrint={()=>window.print()} />
-      <div className="mx-auto max-w-[1120px] px-4 sm:px-6 pb-4 flex sm:hidden gap-2 no-print">
-        <button onClick={handleClear} className="flex-1 min-h-[40px] rounded-xl border border-[var(--color-line)] bg-white px-3 text-sm font-medium focus-ring">Clear</button>
-        <button onClick={()=>window.print()} className="flex-1 min-h-[40px] rounded-xl bg-[var(--color-ink)] px-3 text-sm font-semibold text-white focus-ring">Print</button>
+      <div className="mx-auto max-w-280 px-4 sm:px-6 pb-4 flex sm:hidden gap-2 no-print">
+        <button onClick={handleClear} className="flex-1 min-h-10 rounded-xl border border-line bg-white px-3 text-sm font-medium focus-ring">Clear</button>
+        <button onClick={()=>window.print()} className="flex-1 min-h-10 rounded-xl bg-ink px-3 text-sm font-semibold text-white focus-ring">Print</button>
       </div>
 
       {clearAlert && (
-        <div className="mx-auto max-w-[1120px] px-4 sm:px-6 pb-4 no-print">
+        <div className="mx-auto max-w-280 px-4 sm:px-6 pb-4 no-print">
           <Alert variant="warn" title="Clear all inputs?" onClose={()=>setClearAlert(false)}>
             <p>This will reset all walls, coats, doors/windows and can size to defaults.</p>
             <div className="mt-3 flex gap-2">
-              <button onClick={confirmClear} className="min-h-[36px] rounded-xl bg-[#78350F] px-4 text-sm font-semibold text-white hover:bg-[#92400E] focus-ring">Yes, clear</button>
-              <button onClick={()=>setClearAlert(false)} className="min-h-[36px] rounded-xl border border-amber-300 bg-white px-4 text-sm font-medium hover:bg-amber-50 focus-ring">Cancel</button>
+              <button onClick={confirmClear} className="min-h-9 rounded-xl bg-[#78350F] px-4 text-sm font-semibold text-white hover:bg-[#92400E] focus-ring">Yes, clear</button>
+              <button onClick={()=>setClearAlert(false)} className="min-h-9 rounded-xl border border-amber-300 bg-white px-4 text-sm font-medium hover:bg-amber-50 focus-ring">Cancel</button>
             </div>
           </Alert>
         </div>
       )}
 
-      <main className="mx-auto max-w-[1120px] px-4 sm:px-6 pb-12 grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-6 items-start">
+      <main className="mx-auto max-w-280 px-4 sm:px-6 pb-12 grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-6 items-start">
         <Card>
           <div className="flex items-center justify-between">
-            <h2 className="text-sm font-semibold tracking-widest uppercase text-[var(--color-ink-muted)]">Your room</h2>
-            <span className="text-xs text-[var(--color-ink-muted)]">Auto-saved</span>
+            <h2 className="text-sm font-semibold tracking-widest uppercase text-ink-muted">Your room</h2>
+            <span className="text-xs text-ink-muted">Auto-saved</span>
           </div>
 
           <div className="mt-5"><WallCountSelect wallCount={wallCount} onChange={setWallCount} /></div>
@@ -65,10 +65,10 @@ function AppInner(){
         <div className="lg:sticky lg:top-6">
           <ResultSummary result={result} hasAnyWall={hasAnyWall} activeWalls={activeWalls} canType={canType} coats={coats} doorCount={doorNum} windowCount={winNum} />
           <div className="mt-3 flex gap-2 no-print">
-            <button onClick={handleCopy} className="flex-1 min-h-[40px] rounded-xl border border-[var(--color-line)] bg-white px-3 text-sm font-medium hover:border-[var(--color-accent)]/40 hover:bg-[var(--color-paper-2)] transition-all focus-ring">Copy summary</button>
-            <button onClick={()=>window.print()} className="flex-1 min-h-[40px] rounded-xl border border-[var(--color-line)] bg-white px-3 text-sm font-medium hover:border-[var(--color-accent)]/40 transition-all focus-ring">Print</button>
+            <button onClick={handleCopy} className="flex-1 min-h-10 rounded-xl border border-line bg-white px-3 text-sm font-medium hover:border-accent/40 hover:bg-paper-2 transition-all focus-ring">Copy summary</button>
+            <button onClick={()=>window.print()} className="flex-1 min-h-10 rounded-xl border border-line bg-white px-3 text-sm font-medium hover:border-accent/40 transition-all focus-ring">Print</button>
           </div>
-          <p className="mt-3 text-center text-xs text-[var(--color-ink-muted)]">Live recalculation — no submit needed. Change any value to update.</p>
+          <p className="mt-3 text-center text-xs text-ink-muted">Live recalculation — no submit needed. Change any value to update.</p>
         </div>
       </main>
       <Footer />
