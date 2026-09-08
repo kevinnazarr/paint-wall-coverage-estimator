@@ -1,0 +1,6 @@
+node_modules
+dist
+.omo
+package-lock.json
+pnpm-lock.yaml
+yarn.lock

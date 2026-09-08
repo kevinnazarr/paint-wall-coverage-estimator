@@ -1,0 +1,33 @@
+@import "tailwindcss";
+@theme {
+  --color-paper: #FDFCF8;
+  --color-paper-2: #F5F1E8;
+  --color-ink: #1A1A1E;
+  --color-ink-muted: #6B6B73;
+  --color-line: #EAE8E3;
+  --color-accent: #C46A2C;
+  --color-accent-hover: #A85A24;
+  --color-accent-subtle: #FFF4E8;
+  --color-warn: #B45309;
+  --color-warn-bg: #FFFBEB;
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.08), 0 8px 24px rgba(0,0,0,0.06);
+  --shadow-hover: 0 4px 16px rgba(0,0,0,0.10);
+}
+* { scrollbar-width: thin; }
+html { color-scheme: light; }
+body { background: var(--color-paper); color: var(--color-ink); font-family: Inter, ui-sans-serif, system-ui, sans-serif; }
+@media (prefers-reduced-motion: reduce) { *,*::before,*::after{transition:none!important;animation:none!important} }
+.focus-ring:focus-visible{outline:none;box-shadow:0 0 0 2px var(--color-paper),0 0 0 4px var(--color-accent)}
+.wall-row-enter{animation:wallEnter 160ms ease-out} @keyframes wallEnter{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.number-fade{transition:opacity 150ms ease-out,transform 150ms ease-out}
+.guard-enter{animation:guardEnter 150ms ease-out} @keyframes guardEnter{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+@media (prefers-reduced-motion: reduce){.wall-row-enter,.guard-enter{animation:none}.number-fade{transition:none}}
+@media print{
+  body{ background:white }
+  header{ padding-top:12px!important }
+  main{ display:block!important }
+  main > section:first-child{ display:none }
+  main > div:last-child{ position:static!important }
+  footer{ display:none }
+  .no-print{ display:none!important }
+}
